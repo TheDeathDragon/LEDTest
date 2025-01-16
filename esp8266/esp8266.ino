@@ -30,9 +30,8 @@ void setAllPixels(uint32_t color) {
 }
 
 // 呼吸灯效果：color 颜色, durationMs 单次渐变总时长, loops 循环次数
-// 注意：此处 color 参数若(0,255,0)则实际显示为红色；(255,0,0)则显示为绿色
 void breathingEffect(uint32_t color, int durationMs, int loops) {
-  // 简单线性渐变示例
+  // 线性渐变
   for (int loop = 0; loop < loops; loop++) {
     // 从暗到亮
     for (int val = 0; val <= 255; val += 5) {
@@ -71,7 +70,7 @@ void breathingEffect(uint32_t color, int durationMs, int loops) {
 }
 
 /**************************************************************
- * 各种灯效函数（阻塞式）
+ * 灯效函数
  **************************************************************/
 
 // 1.总开关 - 关闭所有灯效
@@ -324,19 +323,19 @@ void handleEffectCamSave() {
 
 // 18.开机灯效：红 -> 绿 -> 蓝，依次点亮并保持 1 秒，间隔 0.2 秒
 void handleEffectStartup() {
-  // 红 => (0,255,0)
+  // 红
   setAllPixels(pixels.Color(0,255,0));
   delay(1000);
   clearPixels();
   delay(200);
 
-  // 绿 => (255,0,0)
+  // 绿
   setAllPixels(pixels.Color(255,0,0));
   delay(1000);
   clearPixels();
   delay(200);
 
-  // 蓝 => (0,0,255)
+  // 蓝
   setAllPixels(pixels.Color(0,0,255));
   delay(1000);
   clearPixels();
